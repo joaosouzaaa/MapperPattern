@@ -13,6 +13,9 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="DependencyInjection\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>

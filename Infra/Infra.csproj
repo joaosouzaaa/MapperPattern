@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="DependencyInjection\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="DatabaseContexts\" />
+    <Folder Include="EntitiesMapping\" />
     <Folder Include="Repositories\" />
   </ItemGroup>
 
