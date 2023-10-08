@@ -19,8 +19,8 @@ public sealed class EngineMapping : IEntityTypeConfiguration<Engine>
             .IsRequired(true);
 
         builder.Property(e => e.Description)
-            .HasColumnName("varchar(400)")
-            .HasColumnType("description")
+            .HasColumnName("description")
+            .HasColumnType("varchar(400)")
             .IsRequired(true);
     }
 }

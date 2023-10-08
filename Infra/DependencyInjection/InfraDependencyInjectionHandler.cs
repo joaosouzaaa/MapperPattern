@@ -1,12 +1,14 @@
 ﻿using Infra.DatabaseContexts;
+using Infra.Interfaces;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Infra.DependencyInjection;
-public static class InfraDependencyInjection
+public static class InfraDependencyInjectionHandler
 {
-    public static void AddInfraDependencyInjection(this IServiceCollection services, IConfiguration configuration)
+    public static void AddInfraDependencyInjectionHandler(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<MapperPatternDatabaseContext>(options =>
         {
@@ -14,5 +16,12 @@ public static class InfraDependencyInjection
             options.EnableDetailedErrors();
             options.EnableSensitiveDataLogging();
         });
+
+        services.AddScoped<ICarRepository>();
+    }
+
+    public static void UseInfraSettings(this IApplicationBuilder app)
+    {
+        MigrationHandler.MigrateDatabase(app);
     }
 }
