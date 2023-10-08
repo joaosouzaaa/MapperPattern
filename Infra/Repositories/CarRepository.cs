@@ -1,30 +1,20 @@
 ﻿using Domain.Entities;
 using Infra.DatabaseContexts;
 using Infra.Interfaces;
+using Infra.Repositories.BaseRepositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
 
 namespace Infra.Repositories;
-public sealed class CarRepository : ICarRepository, IDisposable
+public sealed class CarRepository : BaseRepository<Car>, ICarRepository
 {
-    private readonly MapperPatternDatabaseContext _dbContext;
-    private DbSet<Car> _dbContextSet => _dbContext.Set<Car>();
-
-    public CarRepository(MapperPatternDatabaseContext dbContext)
+    public CarRepository(MapperPatternDatabaseContext dbContext) : base(dbContext)
     {
-        _dbContext = dbContext;
     }
 
     public async Task<bool> AddAsync(Car car)
     {
         await _dbContextSet.AddAsync(car);
-
-        return await SaveChangesAsync();
-    }
-
-    public async Task<bool> UpdateAsync(Car car)
-    {
-        _dbContext.Entry<Car>(car).State = EntityState.Modified;
 
         return await SaveChangesAsync();
     }
@@ -36,7 +26,7 @@ public sealed class CarRepository : ICarRepository, IDisposable
         if (includes is not null)
             query = includes(query);
 
-        return await _dbContextSet.FirstOrDefaultAsync<Car>(c => c.CarId == id);
+        return await _dbContextSet.AsNoTracking().FirstOrDefaultAsync<Car>(c => c.CarId == id);
     }
 
     public async Task<List<Car>> GetAllAsync(Func<IQueryable<Car>, IIncludableQueryable<Car, object>> includes = null)
@@ -48,10 +38,4 @@ public sealed class CarRepository : ICarRepository, IDisposable
 
         return await query.AsNoTracking().ToListAsync();
     }
-
-    public void Dispose() =>
-        _dbContext.Dispose();
-
-    private async Task<bool> SaveChangesAsync() =>
-        await _dbContext.SaveChangesAsync() > 0;
 }

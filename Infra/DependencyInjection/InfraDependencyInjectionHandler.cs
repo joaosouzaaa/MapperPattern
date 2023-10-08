@@ -1,5 +1,6 @@
 ﻿using Infra.DatabaseContexts;
 using Infra.Interfaces;
+using Infra.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -17,7 +18,8 @@ public static class InfraDependencyInjectionHandler
             options.EnableSensitiveDataLogging();
         });
 
-        services.AddScoped<ICarRepository>();
+        services.AddScoped<ICarRepository, CarRepository>();
+        services.AddScoped<IColorRepository, ColorRepository>();
     }
 
     public static void UseInfraSettings(this IApplicationBuilder app)
