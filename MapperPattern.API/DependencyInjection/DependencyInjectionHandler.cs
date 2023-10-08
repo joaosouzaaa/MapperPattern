@@ -1,6 +1,6 @@
 ﻿using Infra.DependencyInjection;
 
-namespace Automapper.DependencyInjection;
+namespace MapperPattern.API.DependencyInjection;
 
 public static class DependencyInjectionHandler
 {

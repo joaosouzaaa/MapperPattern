@@ -21,4 +21,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="AutoMapper.APITests\" />
+    <Folder Include="MapperPattern.APITests\" />
+  </ItemGroup>
+
 </Project>

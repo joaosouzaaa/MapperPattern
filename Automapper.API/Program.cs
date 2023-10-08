@@ -1,4 +1,4 @@
-using Automapper.DependencyInjection;
+using AutoMapper.API.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 IConfiguration configuration = builder.Configuration;

@@ -1,4 +1,4 @@
-using MapperPattern.DependencyInjection;
+using MapperPattern.API.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 IConfiguration configuration = builder.Configuration;
