@@ -19,7 +19,7 @@ public sealed class CarRepository : BaseRepository<Car>, ICarRepository
         return await SaveChangesAsync();
     }
 
-    public async Task<Car> GetByIdAsync(int id, Func<IQueryable<Car>, IIncludableQueryable<Car, object>> includes = null)
+    public async Task<Car?> GetByIdAsync(int id, Func<IQueryable<Car>, IIncludableQueryable<Car, object>> includes = null)
     {
         var query = (IQueryable<Car>)_dbContextSet;
 

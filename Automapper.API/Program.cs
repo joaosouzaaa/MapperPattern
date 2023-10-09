@@ -1,4 +1,5 @@
 using AutoMapper.API.DependencyInjection;
+using Infra.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 IConfiguration configuration = builder.Configuration;
@@ -19,6 +20,6 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
-app.UseAppHandler();
+app.UseInfraSettings();
 
 app.Run();

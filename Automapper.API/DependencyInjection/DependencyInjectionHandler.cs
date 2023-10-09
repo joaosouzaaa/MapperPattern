@@ -1,4 +1,6 @@
 ﻿using AutoMapper.API.AutoMapperSettings;
+using AutoMapper.API.Interfaces;
+using AutoMapper.API.Services;
 using Infra.DependencyInjection;
 
 namespace AutoMapper.API.DependencyInjection;
@@ -10,10 +12,7 @@ public static class DependencyInjectionHandler
         services.AddInfraDependencyInjectionHandler(configuration);
 
         AutoMapperFactory.Inicialize();
-    }
 
-    public static void UseAppHandler(this IApplicationBuilder app)
-    {
-        app.UseInfraSettings();
+        services.AddScoped<ICarService, CarService>();
     }
 }
