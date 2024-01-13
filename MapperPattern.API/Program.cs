@@ -1,4 +1,6 @@
+using Domain.Middlewares;
 using MapperPattern.API.DependencyInjection;
+using Infra.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 IConfiguration configuration = builder.Configuration;
@@ -15,10 +17,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+else
+{
+    app.UseMiddleware<UnexpectedErrorMiddleware>();
+}
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
-app.UseAppHandler();
+app.UseInfraSettings();
 
 app.Run();

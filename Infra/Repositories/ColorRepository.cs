@@ -5,19 +5,18 @@ using Infra.Repositories.BaseRepositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Repositories;
-public sealed class ColorRepository : BaseRepository<Color>, IColorRepository
+public sealed class ColorRepository(MapperPatternDatabaseContext dbContext) : BaseRepository<Color>(dbContext), IColorRepository
 {
-    public ColorRepository(MapperPatternDatabaseContext dbContext) : base(dbContext)
-    {
-    }
-
     public async Task<bool> AddAsync(Color color)
     {
-        await _dbContextSet.AddAsync(color);
+        await DbContextSet.AddAsync(color);
 
         return await SaveChangesAsync();
     }
 
-    public async Task<List<Color>> GetAllAsync() =>
-        await _dbContextSet.AsNoTracking().ToListAsync();
+    public Task<List<Color>> GetAllAsync() =>
+        DbContextSet.AsNoTracking().ToListAsync();
+
+    public Task<Color> GetByIdAsync(int id) =>
+        DbContextSet.FirstOrDefaultAsync(c => c.Id == id);
 }

@@ -6,32 +6,28 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
 
 namespace Infra.Repositories;
-public sealed class CarRepository : BaseRepository<Car>, ICarRepository
+public sealed class CarRepository(MapperPatternDatabaseContext dbContext) : BaseRepository<Car>(dbContext), ICarRepository
 {
-    public CarRepository(MapperPatternDatabaseContext dbContext) : base(dbContext)
-    {
-    }
-
     public async Task<bool> AddAsync(Car car)
     {
-        await _dbContextSet.AddAsync(car);
+        await DbContextSet.AddAsync(car);
 
         return await SaveChangesAsync();
     }
 
     public async Task<Car?> GetByIdAsync(int id, Func<IQueryable<Car>, IIncludableQueryable<Car, object>> includes = null)
     {
-        var query = (IQueryable<Car>)_dbContextSet;
+        var query = (IQueryable<Car>)DbContextSet;
 
         if (includes is not null)
             query = includes(query);
 
-        return await _dbContextSet.AsNoTracking().FirstOrDefaultAsync<Car>(c => c.CarId == id);
+        return await DbContextSet.AsNoTracking().FirstOrDefaultAsync<Car>(c => c.Id == id);
     }
 
     public async Task<List<Car>> GetAllAsync(Func<IQueryable<Car>, IIncludableQueryable<Car, object>> includes = null)
     {
-        var query = (IQueryable<Car>)_dbContextSet;
+        var query = (IQueryable<Car>)DbContextSet;
 
         if (includes is not null)
             query = includes(query);

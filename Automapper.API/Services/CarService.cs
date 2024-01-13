@@ -8,18 +8,21 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AutoMapper.API.Services;
 
-public sealed class CarService : ICarService
+public sealed class CarService(ICarRepository carRepository, IColorFacadeService colorFacadeService) : ICarService
 {
-    private readonly ICarRepository _carRepository;
-
-    public CarService(ICarRepository carRepository)
-    {
-        _carRepository = carRepository;
-    }
+    private readonly ICarRepository _carRepository = carRepository;
+    private readonly IColorFacadeService _colorFacadeService = colorFacadeService;
 
     public async Task<bool> AddAsync(CarSaveRequest carSaveRequest)
     {
         var car = carSaveRequest.MapTo<CarSaveRequest, Car>();
+
+        foreach(var colorId in  carSaveRequest.ColorIds)
+        {
+            var color = await _colorFacadeService.GetByIdReturnsDomainObjectAsync(colorId);
+
+            car.Colors.Add(color); 
+        }
 
         return await _carRepository.AddAsync(car);
     }
@@ -28,14 +31,16 @@ public sealed class CarService : ICarService
     {
         var car = await _carRepository.GetByIdAsync(id);
 
-        return car.MapTo<Car, CarResponse>();
+        return car?.MapTo<Car, CarResponse>();
     }
 
     public async Task<CarResponse?> GetByIdWithAllRelationshipsAsync(int id)
     {
-        var car = await _carRepository.GetByIdAsync(id, c => c.Include(c => c.Engine).Include(c => c.CarFeatures).Include(c => c.Colors));
+        var car = await _carRepository.GetByIdAsync(id, c => c.Include(c => c.Engine)
+            .Include(c => c.CarFeatures)
+            .Include(c => c.Colors));
 
-        return car.MapTo<Car, CarResponse>();
+        return car?.MapTo<Car, CarResponse>();
     }
 
     public async Task<List<CarResponse>> GetAllAsync()
@@ -47,7 +52,9 @@ public sealed class CarService : ICarService
 
     public async Task<List<CarResponse>> GetAllWithAllRelationshipsAsync()
     {
-        var carList = await _carRepository.GetAllAsync(c => c.Include(c => c.Engine).Include(c => c.CarFeatures).Include(c => c.Colors));
+        var carList = await _carRepository.GetAllAsync(c => c.Include(c => c.Engine)
+            .Include(c => c.CarFeatures)
+            .Include(c => c.Colors));
 
         return carList.MapTo<List<Car>, List<CarResponse>>();
     }

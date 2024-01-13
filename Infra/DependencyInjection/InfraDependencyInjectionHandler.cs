@@ -1,6 +1,5 @@
 ﻿using Infra.DatabaseContexts;
-using Infra.Interfaces;
-using Infra.Repositories;
+using Infra.Settings.MigrationSettings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -18,12 +17,11 @@ public static class InfraDependencyInjectionHandler
             options.EnableSensitiveDataLogging();
         });
 
-        services.AddScoped<ICarRepository, CarRepository>();
-        services.AddScoped<IColorRepository, ColorRepository>();
+        services.AddRepositoriesDependencyInjection();
     }
 
     public static void UseInfraSettings(this IApplicationBuilder app)
     {
-        MigrationHandler.MigrateDatabase(app);
+        app.MigrateDatabase();
     }
 }

@@ -3,7 +3,7 @@
 namespace Domain.Entities;
 public sealed class Car
 {
-    public int CarId { get; set; }
+    public int Id { get; set; }
     public required string Model { get; set; }
     public required int Year { get; set; }
     public required decimal Price { get; set; }

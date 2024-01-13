@@ -7,7 +7,9 @@ public sealed class CarMapping : IEntityTypeConfiguration<Car>
 {
     public void Configure(EntityTypeBuilder<Car> builder)
     {
-        builder.HasKey(x => x.CarId);
+        builder.ToTable(nameof(Car));
+
+        builder.HasKey(c => c.Id);
 
         builder.Property(c => c.Model)
             .HasColumnType("varchar(50)")
@@ -44,12 +46,12 @@ public sealed class CarMapping : IEntityTypeConfiguration<Car>
 
         builder.HasMany(c => c.CarFeatures)
             .WithOne(c => c.Car)
-            .HasForeignKey(c => c.CarFeatureId)
+            .HasForeignKey(c => c.CarId)
             .OnDelete(DeleteBehavior.Cascade);
 
         builder.HasMany(c => c.Colors)
             .WithMany(c => c.Cars)
-            .UsingEntity<Dictionary<string, object>>("CarColors", configuration =>
+            .UsingEntity<Dictionary<string, object>>("CarsColors", configuration =>
             {
                 configuration.HasOne<Car>().WithMany().HasForeignKey("CarId");
                 configuration.HasOne<Color>().WithMany().HasForeignKey("ColorId");

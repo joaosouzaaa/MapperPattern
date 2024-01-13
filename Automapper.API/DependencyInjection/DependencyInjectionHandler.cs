@@ -1,18 +1,18 @@
 ﻿using AutoMapper.API.AutoMapperSettings;
-using AutoMapper.API.Interfaces;
-using AutoMapper.API.Services;
 using Infra.DependencyInjection;
 
 namespace AutoMapper.API.DependencyInjection;
 
 public static class DependencyInjectionHandler
 {
-    public static void AddDependencyInjectionHandler(this IServiceCollection services, IConfiguration configuration)
+    public static void AddDependencyInjection(this IServiceCollection services, IConfiguration configuration)
     {
+        services.AddCorsDependencyInjection();
+
         services.AddInfraDependencyInjectionHandler(configuration);
 
         AutoMapperFactory.Inicialize();
 
-        services.AddScoped<ICarService, CarService>();
+        services.AddServicesDependencyInjection();
     }
 }

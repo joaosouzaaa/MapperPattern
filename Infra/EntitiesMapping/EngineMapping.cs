@@ -7,10 +7,12 @@ public sealed class EngineMapping : IEntityTypeConfiguration<Engine>
 {
     public void Configure(EntityTypeBuilder<Engine> builder)
     {
-        builder.HasKey(x => x.EngineId);
+        builder.ToTable(nameof(Engine));
 
-        builder.Property(e => e.EngineType)
-            .HasColumnName("engine_type")
+        builder.HasKey(e => e.Id);
+
+        builder.Property(e => e.Type)
+            .HasColumnName("type")
             .IsRequired(true);
 
         builder.Property(e => e.Horsepower)

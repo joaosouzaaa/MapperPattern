@@ -5,7 +5,7 @@ using DataTransferObjects.Responses.Engine;
 namespace DataTransferObjects.Responses.Car;
 public sealed class CarResponse
 {
-    public required int CarId { get; set; }
+    public required int Id { get; set; }
     public required string Model { get; set; }
     public required int Year { get; set; }
     public required decimal Price { get; set; }

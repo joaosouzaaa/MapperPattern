@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using System.Reflection;
+﻿using System.Reflection;
 
 namespace AutoMapper.API.AutoMapperSettings;
 
@@ -10,12 +9,12 @@ public static class AutoMapperFactory
 
     public static void Inicialize()
     {
-        MapperConfiguration = new MapperConfiguration(config =>
+        MapperConfiguration = new MapperConfiguration(mapperConfiguration =>
         {
             var profiles = Assembly.GetExecutingAssembly().GetExportedTypes().Where(p => p.IsClass && typeof(Profile).IsAssignableFrom(p));
 
             foreach (var profile in profiles)
-                config.AddProfile((Profile)Activator.CreateInstance(profile));
+                mapperConfiguration.AddProfile((Profile)Activator.CreateInstance(profile));
         });
 
         Mapper = MapperConfiguration.CreateMapper();

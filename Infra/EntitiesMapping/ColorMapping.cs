@@ -7,11 +7,13 @@ public sealed class ColorMapping : IEntityTypeConfiguration<Color>
 {
     public void Configure(EntityTypeBuilder<Color> builder)
     {
-        builder.HasKey(x => x.ColorId);
+        builder.ToTable(nameof(Color));
 
-        builder.Property(c => c.ColorName)
+        builder.HasKey(c => c.Id);
+
+        builder.Property(c => c.Name)
             .HasColumnType("varchar(50)")
-            .HasColumnName("color_name")
+            .HasColumnName("name")
             .IsRequired(true);
     }
 }

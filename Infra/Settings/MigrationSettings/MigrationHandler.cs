@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Infra.DependencyInjection;
+namespace Infra.Settings.MigrationSettings;
 public static class MigrationHandler
 {
     public static void MigrateDatabase(this IApplicationBuilder app)

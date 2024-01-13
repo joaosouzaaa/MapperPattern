@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using DataTransferObjects.Requests.CarFeature;
+﻿using DataTransferObjects.Requests.CarFeature;
 using DataTransferObjects.Responses.CarFeature;
 using Domain.Entities;
 

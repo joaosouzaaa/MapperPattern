@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Benchmark", "Benchmark\Benchmark.csproj", "{73977FFA-181B-4DD5-AE5E-3E387D9DF840}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{A6F7F79A-E0CA-428B-BE0A-1BB991E0EAA6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra", "Infra\Infra.csproj", "{AFDD2346-76FF-4281-8E90-ED0825BB89A8}"
@@ -19,16 +17,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MapperPattern.API", "Mapper
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoMapper.API", "AutoMapper.API\AutoMapper.API.csproj", "{EB204402-D0FC-491C-9EA6-D3E3C18939BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMapper.API.Benchmarks", "AutoMapper.API.Benchmarks\AutoMapper.API.Benchmarks.csproj", "{9BB2F651-437E-47B6-84A6-A7ACA1362FEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapperPattern.API.Benchmarks", "MapperPattern.API.Benchmarks\MapperPattern.API.Benchmarks.csproj", "{A3573FDA-E6E6-4981-8BD1-7E59D765C8A3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{73977FFA-181B-4DD5-AE5E-3E387D9DF840}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{73977FFA-181B-4DD5-AE5E-3E387D9DF840}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{73977FFA-181B-4DD5-AE5E-3E387D9DF840}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{73977FFA-181B-4DD5-AE5E-3E387D9DF840}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A6F7F79A-E0CA-428B-BE0A-1BB991E0EAA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A6F7F79A-E0CA-428B-BE0A-1BB991E0EAA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6F7F79A-E0CA-428B-BE0A-1BB991E0EAA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -53,6 +51,14 @@ Global
 		{EB204402-D0FC-491C-9EA6-D3E3C18939BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB204402-D0FC-491C-9EA6-D3E3C18939BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB204402-D0FC-491C-9EA6-D3E3C18939BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BB2F651-437E-47B6-84A6-A7ACA1362FEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BB2F651-437E-47B6-84A6-A7ACA1362FEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BB2F651-437E-47B6-84A6-A7ACA1362FEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BB2F651-437E-47B6-84A6-A7ACA1362FEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3573FDA-E6E6-4981-8BD1-7E59D765C8A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3573FDA-E6E6-4981-8BD1-7E59D765C8A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3573FDA-E6E6-4981-8BD1-7E59D765C8A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3573FDA-E6E6-4981-8BD1-7E59D765C8A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

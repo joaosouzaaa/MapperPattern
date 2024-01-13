@@ -2,20 +2,19 @@
 using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Repositories.BaseRepositories;
-public abstract class BaseRepository<TEntity> : IDisposable
+public abstract class BaseRepository<TEntity>(MapperPatternDatabaseContext dbContext) : IDisposable
     where TEntity : class
 {
-    protected readonly MapperPatternDatabaseContext _dbContext;
-    protected DbSet<TEntity> _dbContextSet => _dbContext.Set<TEntity>();
+    private readonly MapperPatternDatabaseContext _dbContext = dbContext;
+    protected DbSet<TEntity> DbContextSet => _dbContext.Set<TEntity>();
 
-    public BaseRepository(MapperPatternDatabaseContext dbContext)
+    public void Dispose()
     {
-        _dbContext = dbContext;
+        GC.SuppressFinalize(this);
+
+        _dbContext.Dispose();
     }
 
     protected async Task<bool> SaveChangesAsync() =>
         await _dbContext.SaveChangesAsync() > 0;
-
-    public void Dispose() =>
-        _dbContext.Dispose();
 }

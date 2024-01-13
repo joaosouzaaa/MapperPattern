@@ -7,11 +7,13 @@ public sealed class CarFeatureMapping : IEntityTypeConfiguration<CarFeature>
 {
     public void Configure(EntityTypeBuilder<CarFeature> builder)
     {
-        builder.HasKey(x => x.CarFeatureId);
+        builder.ToTable(nameof(CarFeature));
 
-        builder.Property(c => c.FeatureName)
+        builder.HasKey(c => c.Id);
+
+        builder.Property(c => c.Name)
             .HasColumnType("varchar(50)")
-            .HasColumnName("feature_name")
+            .HasColumnName("name")
             .IsRequired(true);
 
         builder.Property(c => c.IsAvailable)
