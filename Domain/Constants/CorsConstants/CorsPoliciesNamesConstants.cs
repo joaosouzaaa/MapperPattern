@@ -1,4 +1,4 @@
-﻿namespace AutoMapper.API.Constants.CorsConstants;
+﻿namespace Domain.Constants.CorsConstants;
 
 public static class CorsPoliciesNamesConstants
 {

@@ -34,13 +34,13 @@ public sealed class CarService(ICarRepository carRepository, IColorFacadeService
         return car?.MapTo<Car, CarResponse>();
     }
 
-    public async Task<CarResponse?> GetByIdWithAllRelationshipsAsync(int id)
+    public async Task<CarWithRelationshipsResponse?> GetByIdWithAllRelationshipsAsync(int id)
     {
         var car = await _carRepository.GetByIdAsync(id, c => c.Include(c => c.Engine)
             .Include(c => c.CarFeatures)
             .Include(c => c.Colors));
 
-        return car?.MapTo<Car, CarResponse>();
+        return car?.MapTo<Car, CarWithRelationshipsResponse>();
     }
 
     public async Task<List<CarResponse>> GetAllAsync()
@@ -50,12 +50,12 @@ public sealed class CarService(ICarRepository carRepository, IColorFacadeService
         return carList.MapTo<List<Car>, List<CarResponse>>();
     }
 
-    public async Task<List<CarResponse>> GetAllWithAllRelationshipsAsync()
+    public async Task<List<CarWithRelationshipsResponse>> GetAllWithAllRelationshipsAsync()
     {
         var carList = await _carRepository.GetAllAsync(c => c.Include(c => c.Engine)
             .Include(c => c.CarFeatures)
             .Include(c => c.Colors));
 
-        return carList.MapTo<List<Car>, List<CarResponse>>();
+        return carList.MapTo<List<Car>, List<CarWithRelationshipsResponse>>();
     }
 }

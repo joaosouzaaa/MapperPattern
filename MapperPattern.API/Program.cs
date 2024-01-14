@@ -1,6 +1,7 @@
 using Domain.Middlewares;
 using MapperPattern.API.DependencyInjection;
 using Infra.DependencyInjection;
+using Domain.Constants.CorsConstants;
 
 var builder = WebApplication.CreateBuilder(args);
 IConfiguration configuration = builder.Configuration;
@@ -23,6 +24,7 @@ else
 }
 
 app.UseHttpsRedirection();
+app.UseCors(CorsPoliciesNamesConstants.CorsPolicy);
 app.UseAuthorization();
 app.MapControllers();
 app.UseInfraSettings();

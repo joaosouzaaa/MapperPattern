@@ -13,5 +13,7 @@ public sealed class CarProfile : Profile
 			.ForMember(destination => destination.RegistrationDate, options => options.MapFrom(src => DateTime.UtcNow));
 
         CreateMap<Car, CarResponse>();
+
+		CreateMap<Car, CarWithRelationshipsResponse>();
 	}
 }

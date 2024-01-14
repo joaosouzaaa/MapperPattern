@@ -7,7 +7,7 @@ public interface ICarService
 {
     Task<bool> AddAsync(CarSaveRequest carSaveRequest);
     Task<CarResponse?> GetByIdAsync(int id);
-    Task<CarResponse?> GetByIdWithAllRelationshipsAsync(int id);
+    Task<CarWithRelationshipsResponse?> GetByIdWithAllRelationshipsAsync(int id);
     Task<List<CarResponse>> GetAllAsync();
-    Task<List<CarResponse>> GetAllWithAllRelationshipsAsync();
+    Task<List<CarWithRelationshipsResponse>> GetAllWithAllRelationshipsAsync();
 }

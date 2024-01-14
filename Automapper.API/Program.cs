@@ -1,5 +1,5 @@
-using AutoMapper.API.Constants.CorsConstants;
 using AutoMapper.API.DependencyInjection;
+using Domain.Constants.CorsConstants;
 using Domain.Middlewares;
 using Infra.DependencyInjection;
 

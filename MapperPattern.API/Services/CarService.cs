@@ -1,7 +1,9 @@
 ﻿using DataTransferObjects.Requests.Car;
+using DataTransferObjects.Responses.Car;
 using Infra.Interfaces;
 using MapperPattern.API.Interfaces.Mappers;
 using MapperPattern.API.Interfaces.Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace MapperPattern.API.Services;
 
@@ -26,5 +28,41 @@ public sealed class CarService(ICarRepository carRepository, ICarMapper carMappe
         return await _carRepository.AddAsync(car);
     }
 
+    public async Task<CarResponse?> GetByIdAsync(int id)
+    {
+        var car = await _carRepository.GetByIdAsync(id);
 
+        if (car is null)
+            return null;
+
+        return _carMapper.DomainToResponse(car);
+    }
+
+    public async Task<CarWithRelationshipsResponse?> GetByIdWithAllRelationshipsAsync(int id)
+    {
+        var car = await _carRepository.GetByIdAsync(id, c => c.Include(c => c.Engine)
+            .Include(c => c.CarFeatures)
+            .Include(c => c.Colors));
+
+        if(car is null)
+            return null;
+
+        return _carMapper.DomainToWithRelationshipsResponse(car);
+    }
+
+    public async Task<List<CarResponse>> GetAllAsync()
+    {
+        var carList = await _carRepository.GetAllAsync();
+
+        return _carMapper.DomainListToResponseList(carList);
+    }
+
+    public async Task<List<CarWithRelationshipsResponse>> GetAllWithAllRelationshipsAsync()
+    {
+        var carList = await _carRepository.GetAllAsync(c => c.Include(c => c.Engine)
+            .Include(c => c.CarFeatures)
+            .Include(c => c.Colors));
+
+        return _carMapper.DomainListToWithRelationshipsResponseList(carList);
+    }
 }

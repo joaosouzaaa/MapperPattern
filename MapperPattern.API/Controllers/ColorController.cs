@@ -1,7 +1,7 @@
-﻿using AutoMapper.API.Interfaces;
-using DataTransferObjects.Requests.Color;
+﻿using DataTransferObjects.Requests.Color;
 using DataTransferObjects.Responses.Color;
 using Domain.Constants.RouteConstants;
+using MapperPattern.API.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AutoMapper.API.Controllers;

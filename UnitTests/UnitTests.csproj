@@ -24,6 +24,7 @@
   <ItemGroup>
     <Folder Include="AutoMapper.APITests\" />
     <Folder Include="MapperPattern.APITests\" />
+    <Folder Include="InfraTests\" />
   </ItemGroup>
 
 </Project>

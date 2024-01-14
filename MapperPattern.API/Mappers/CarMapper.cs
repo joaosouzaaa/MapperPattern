@@ -27,10 +27,22 @@ public sealed class CarMapper(ICarFeatureMapper carFeatureMapper, IColorMapper c
             Colors = []
         };
 
+    public CarResponse DomainToResponse(Car car) =>
+        new()
+        {
+            FuelType = (ushort)car.FuelType,
+            HasNavigationSystem = car.HasNavigationSystem,
+            Id = car.Id,
+            Model = car.Model,
+            Price = car.Price,
+            RegistrationDate = car.RegistrationDate,
+            Year = car.Year
+        };
+
     public List<CarResponse> DomainListToResponseList(List<Car> carList) =>
         carList.Select(DomainToResponse).ToList();
 
-    private CarResponse DomainToResponse(Car car) =>
+    public CarWithRelationshipsResponse DomainToWithRelationshipsResponse(Car car) =>
         new()
         {
             CarFeatures = _carFeatureMapper.DomainListToResponseList(car.CarFeatures),
@@ -44,4 +56,7 @@ public sealed class CarMapper(ICarFeatureMapper carFeatureMapper, IColorMapper c
             RegistrationDate = car.RegistrationDate,
             Year = car.Year
         };
+
+    public List<CarWithRelationshipsResponse> DomainListToWithRelationshipsResponseList(List<Car> carList) =>
+        carList.Select(DomainToWithRelationshipsResponse).ToList();
 }

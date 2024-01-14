@@ -1,4 +1,4 @@
-﻿namespace AutoMapper.API.Constants.RouteConstants;
+﻿namespace Domain.Constants.RouteConstants;
 
 public static class CarRouteConstants
 {

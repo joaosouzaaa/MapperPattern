@@ -16,11 +16,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Constants\RouteConstants\" />
-		<Folder Include="Controllers\" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<ProjectReference Include="..\DataTransferObjects\DataTransferObjects.csproj" />
 		<ProjectReference Include="..\Infra\Infra.csproj" />
 	</ItemGroup>

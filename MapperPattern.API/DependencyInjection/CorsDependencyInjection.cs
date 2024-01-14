@@ -1,6 +1,6 @@
 ﻿using Domain.Constants.CorsConstants;
 
-namespace AutoMapper.API.DependencyInjection;
+namespace MapperPattern.API.DependencyInjection;
 
 public static class CorsDependencyInjection
 {

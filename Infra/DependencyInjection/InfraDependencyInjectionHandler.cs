@@ -1,4 +1,5 @@
 ﻿using Infra.DatabaseContexts;
+using Infra.Factories;
 using Infra.Settings.MigrationSettings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +13,7 @@ public static class InfraDependencyInjectionHandler
     {
         services.AddDbContext<MapperPatternDatabaseContext>(options =>
         {
-            options.UseSqlServer(configuration.GetConnectionString("LocalConnection"));
+            options.UseSqlServer(configuration.GetConnectionString());
             options.EnableDetailedErrors();
             options.EnableSensitiveDataLogging();
         });
