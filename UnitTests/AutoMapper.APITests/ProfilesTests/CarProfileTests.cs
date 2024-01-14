@@ -36,6 +36,7 @@ public sealed class CarProfileTests
         Assert.NotNull(carResult.Engine);
         Assert.Equal(carResult.CarFeatures.Count, carSaveRequest.CarFeatures.Count);
         Assert.Empty(carResult.Colors);
+        Assert.NotEqual(carResult.RegistrationDate, DateTime.MinValue);
     }
 
     [Fact]
