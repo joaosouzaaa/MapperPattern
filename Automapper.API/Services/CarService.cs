@@ -21,6 +21,9 @@ public sealed class CarService(ICarRepository carRepository, IColorFacadeService
         {
             var color = await _colorFacadeService.GetByIdReturnsDomainObjectAsync(colorId);
 
+            if (color is null)
+                return false;
+
             car.Colors.Add(color); 
         }
 

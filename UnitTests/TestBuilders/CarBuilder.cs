@@ -15,6 +15,7 @@ public sealed class CarBuilder
     private List<CarFeature> _carFeatureList = [];
     private List<Color> _colorList = [];
     private List<CarFeatureSaveRequest> _carFeatureSaveRequestList = [];
+    private List<int> _colorIdList = [];
 
     public static CarBuilder NewObject() =>
         new();
@@ -42,7 +43,7 @@ public sealed class CarBuilder
             _hasNavigationSystem,
             EngineBuilder.NewObject().SaveRequestBuild(),
             _carFeatureSaveRequestList,
-            []);
+            _colorIdList);
 
     public CarBuilder WithCarFeatureSaveRequestList(List<CarFeatureSaveRequest> carFeatureSaveRequestList)
     {
@@ -62,6 +63,13 @@ public sealed class CarBuilder
     {
         _colorList = colorList; 
         
+        return this;
+    }
+
+    public CarBuilder WithColorIdList(List<int> colorIdList)
+    {
+        _colorIdList = colorIdList;
+
         return this;
     }
 }
