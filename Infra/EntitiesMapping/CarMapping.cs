@@ -53,8 +53,8 @@ public sealed class CarMapping : IEntityTypeConfiguration<Car>
             .WithMany(c => c.Cars)
             .UsingEntity<Dictionary<string, object>>("CarsColors", configuration =>
             {
-                configuration.HasOne<Car>().WithMany().HasForeignKey("CarId");
-                configuration.HasOne<Color>().WithMany().HasForeignKey("ColorId");
+                configuration.HasOne<Car>().WithMany().HasForeignKey("CarsId");
+                configuration.HasOne<Color>().WithMany().HasForeignKey("ColorsId");
             });
     }
 }

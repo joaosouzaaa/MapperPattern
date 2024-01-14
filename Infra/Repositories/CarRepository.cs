@@ -22,7 +22,7 @@ public sealed class CarRepository(MapperPatternDatabaseContext dbContext) : Base
         if (includes is not null)
             query = includes(query);
 
-        return await DbContextSet.AsNoTracking().FirstOrDefaultAsync<Car>(c => c.Id == id);
+        return await query.AsNoTracking().FirstOrDefaultAsync<Car>(c => c.Id == id);
     }
 
     public async Task<List<Car>> GetAllAsync(Func<IQueryable<Car>, IIncludableQueryable<Car, object>> includes = null)

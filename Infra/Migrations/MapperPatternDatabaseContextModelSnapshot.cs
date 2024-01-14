@@ -30,17 +30,7 @@ namespace Infra.Migrations
                     b.Property<int>("ColorsId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CarId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ColorId")
-                        .HasColumnType("int");
-
                     b.HasKey("CarsId", "ColorsId");
-
-                    b.HasIndex("CarId");
-
-                    b.HasIndex("ColorId");
 
                     b.HasIndex("ColorsId");
 
@@ -166,17 +156,9 @@ namespace Infra.Migrations
                 {
                     b.HasOne("Domain.Entities.Car", null)
                         .WithMany()
-                        .HasForeignKey("CarId");
-
-                    b.HasOne("Domain.Entities.Car", null)
-                        .WithMany()
                         .HasForeignKey("CarsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("Domain.Entities.Color", null)
-                        .WithMany()
-                        .HasForeignKey("ColorId");
 
                     b.HasOne("Domain.Entities.Color", null)
                         .WithMany()

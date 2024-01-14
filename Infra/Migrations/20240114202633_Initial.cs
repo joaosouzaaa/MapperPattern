@@ -90,29 +90,17 @@ namespace Infra.Migrations
                 columns: table => new
                 {
                     CarsId = table.Column<int>(type: "int", nullable: false),
-                    ColorsId = table.Column<int>(type: "int", nullable: false),
-                    CarId = table.Column<int>(type: "int", nullable: true),
-                    ColorId = table.Column<int>(type: "int", nullable: true)
+                    ColorsId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_CarsColors", x => new { x.CarsId, x.ColorsId });
-                    table.ForeignKey(
-                        name: "FK_CarsColors_Car_CarId",
-                        column: x => x.CarId,
-                        principalTable: "Car",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_CarsColors_Car_CarsId",
                         column: x => x.CarsId,
                         principalTable: "Car",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_CarsColors_Color_ColorId",
-                        column: x => x.ColorId,
-                        principalTable: "Color",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_CarsColors_Color_ColorsId",
                         column: x => x.ColorsId,
@@ -125,16 +113,6 @@ namespace Infra.Migrations
                 name: "IX_CarFeature_CarId",
                 table: "CarFeature",
                 column: "CarId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CarsColors_CarId",
-                table: "CarsColors",
-                column: "CarId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CarsColors_ColorId",
-                table: "CarsColors",
-                column: "ColorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CarsColors_ColorsId",
