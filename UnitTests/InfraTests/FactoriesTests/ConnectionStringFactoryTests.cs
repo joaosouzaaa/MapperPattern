@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Infra.Factories;
+using Domain.Constants.EnviromentConstants;
 
 namespace UnitTests.InfraTests.FactoriesTests;
 public sealed class ConnectionStringFactoryTests
@@ -17,7 +18,7 @@ public sealed class ConnectionStringFactoryTests
             .AddInMemoryCollection(inMemoryCollection!)
             .Build();
 
-        Environment.SetEnvironmentVariable("DOCKER_ENVIROMENT", "DEV_DOCKER_MAPPER");
+        Environment.SetEnvironmentVariable("DOCKER_ENVIROMENT", ContainerContants.DockerEnviroment);
 
         // A
         var connectionStringResult = configuration.GetConnectionString();

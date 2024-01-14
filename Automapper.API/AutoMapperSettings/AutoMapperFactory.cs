@@ -14,7 +14,7 @@ public static class AutoMapperFactory
             var profiles = Assembly.GetExecutingAssembly().GetExportedTypes().Where(p => p.IsClass && typeof(Profile).IsAssignableFrom(p));
 
             foreach (var profile in profiles)
-                mapperConfiguration.AddProfile((Profile)Activator.CreateInstance(profile));
+                mapperConfiguration.AddProfile((Profile)Activator.CreateInstance(profile)!);
         });
 
         Mapper = MapperConfiguration.CreateMapper();

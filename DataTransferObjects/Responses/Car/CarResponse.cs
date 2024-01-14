@@ -1,8 +1,4 @@
-﻿using DataTransferObjects.Responses.CarFeature;
-using DataTransferObjects.Responses.Color;
-using DataTransferObjects.Responses.Engine;
-
-namespace DataTransferObjects.Responses.Car;
+﻿namespace DataTransferObjects.Responses.Car;
 public sealed class CarResponse
 {
     public required int Id { get; set; }

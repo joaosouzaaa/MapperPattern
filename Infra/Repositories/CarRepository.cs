@@ -15,7 +15,7 @@ public sealed class CarRepository(MapperPatternDatabaseContext dbContext) : Base
         return await SaveChangesAsync();
     }
 
-    public async Task<Car?> GetByIdAsync(int id, Func<IQueryable<Car>, IIncludableQueryable<Car, object>> includes = null)
+    public async Task<Car?> GetByIdAsync(int id, Func<IQueryable<Car>, IIncludableQueryable<Car, object>>? includes = null)
     {
         var query = (IQueryable<Car>)DbContextSet;
 
@@ -25,7 +25,7 @@ public sealed class CarRepository(MapperPatternDatabaseContext dbContext) : Base
         return await query.AsNoTracking().FirstOrDefaultAsync<Car>(c => c.Id == id);
     }
 
-    public async Task<List<Car>> GetAllAsync(Func<IQueryable<Car>, IIncludableQueryable<Car, object>> includes = null)
+    public async Task<List<Car>> GetAllAsync(Func<IQueryable<Car>, IIncludableQueryable<Car, object>>? includes = null)
     {
         var query = (IQueryable<Car>)DbContextSet;
 

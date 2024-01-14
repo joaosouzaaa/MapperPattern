@@ -1,5 +1,6 @@
 using AutoMapper.API.DependencyInjection;
 using Domain.Constants.CorsConstants;
+using Domain.Constants.EnviromentConstants;
 using Domain.Middlewares;
 using Infra.DependencyInjection;
 
@@ -27,5 +28,8 @@ app.UseHttpsRedirection();
 app.UseCors(CorsPoliciesNamesConstants.CorsPolicy);
 app.UseAuthorization();
 app.MapControllers();
+
+if (Environment.GetEnvironmentVariable("DOCKER_ENVIROMENT") == ContainerContants.DockerEnviroment)
+    app.UseInfraSettings();
 
 app.Run();

@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using DataTransferObjects.Requests.Engine;
+﻿using DataTransferObjects.Requests.Engine;
 using DataTransferObjects.Responses.Engine;
 using Domain.Entities;
 

@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using DataTransferObjects.Requests.Color;
+﻿using DataTransferObjects.Requests.Color;
 using DataTransferObjects.Responses.Color;
 using Domain.Entities;
 

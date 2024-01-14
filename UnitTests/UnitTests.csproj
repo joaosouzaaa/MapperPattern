@@ -24,11 +24,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="AutoMapper.APITests\" />
+		<Folder Include="AutoMapper.APITests\ServicesTests\" />
 		<Folder Include="MapperPattern.APITests\" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\AutoMapper.API\AutoMapper.API.csproj" />
 		<ProjectReference Include="..\Infra\Infra.csproj" />
 	</ItemGroup>
 
