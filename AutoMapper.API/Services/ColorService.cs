@@ -25,6 +25,6 @@ public sealed class ColorService(IColorRepository colorRepository) : IColorServi
         return colorList.MapTo<List<Color>, List<ColorResponse>>();
     }
 
-    public Task<Color> GetByIdReturnsDomainObjectAsync(int id) =>
+    public Task<Color?> GetByIdReturnsDomainObjectAsync(int id) =>
         _colorRepository.GetByIdAsync(id);
 }

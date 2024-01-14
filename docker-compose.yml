@@ -1,0 +1,37 @@
+version: '3.4'
+
+services:
+  sqldatamapper:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: mssql-container-profile
+    environment:
+      - SA_PASSWORD=Mapper123
+      - ACCEPT_EULA=Y
+
+  automapper.api:
+    image: ${DOCKER_REGISTRY-}automapperapi
+    build:
+      context: .
+      dockerfile: AutoMapper.API/Dockerfile
+    environment:
+      - DOCKER_ENVIROMENT=DEV_DOCKER_MAPPER
+      - ASPNETCORE_ENVIROMENT=Development
+    ports:
+      - "5020:8080"
+      - "5021:8081"
+    depends_on:
+      - "sqldatamapper"
+
+  mapperpattern.api:
+    image: ${DOCKER_REGISTRY-}mapperpattern
+    build:
+      context: .
+      dockerfile: MapperPattern.API/Dockerfile
+    environment:
+      - DOCKER_ENVIROMENT=DEV_DOCKER_MAPPER
+      - ASPNETCORE_ENVIROMENT=Development
+    ports:
+      - "5030:8080"
+      - "5031:8081"
+    depends_on:
+      - "sqldatamapper"

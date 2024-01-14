@@ -17,6 +17,6 @@ public sealed class ColorRepository(MapperPatternDatabaseContext dbContext) : Ba
     public Task<List<Color>> GetAllAsync() =>
         DbContextSet.AsNoTracking().ToListAsync();
 
-    public Task<Color> GetByIdAsync(int id) =>
+    public Task<Color?> GetByIdAsync(int id) =>
         DbContextSet.FirstOrDefaultAsync(c => c.Id == id);
 }

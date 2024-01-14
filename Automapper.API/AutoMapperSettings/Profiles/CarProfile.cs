@@ -10,7 +10,8 @@ public sealed class CarProfile : Profile
 	public CarProfile()
 	{
         CreateMap<CarSaveRequest, Car>()
-			.ForMember(destination => destination.RegistrationDate, options => options.MapFrom(src => DateTime.UtcNow));
+            .ForMember(destination => destination.Colors, options => options.MapFrom(src => new List<Color>()))
+            .ForMember(destination => destination.RegistrationDate, options => options.MapFrom(src => DateTime.UtcNow));
 
         CreateMap<Car, CarResponse>();
 
