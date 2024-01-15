@@ -1,6 +1,9 @@
 ﻿using DataTransferObjects.Enums;
 using DataTransferObjects.Requests.Car;
 using DataTransferObjects.Requests.CarFeature;
+using DataTransferObjects.Responses.Car;
+using DataTransferObjects.Responses.CarFeature;
+using DataTransferObjects.Responses.Color;
 using Domain.Entities;
 using Domain.Enums;
 
@@ -16,6 +19,8 @@ public sealed class CarBuilder
     private List<Color> _colorList = [];
     private List<CarFeatureSaveRequest> _carFeatureSaveRequestList = [];
     private List<int> _colorIdList = [];
+    private readonly List<CarFeatureResponse> _carFeatureResponseList = [];
+    private readonly List<ColorResponse> _colorResponseList = [];
 
     public static CarBuilder NewObject() =>
         new();
@@ -45,6 +50,33 @@ public sealed class CarBuilder
             _carFeatureSaveRequestList,
             _colorIdList);
 
+    public CarResponse ResponseBuild() =>
+        new()
+        {
+            FuelType = 1,
+            HasNavigationSystem = _hasNavigationSystem,
+            Id = 12,
+            Model = _model,
+            Price = _price,
+            RegistrationDate = _registrationDate,
+            Year = _year
+        };
+
+    public CarWithRelationshipsResponse WithRelationshipsResponseBuild() =>
+        new()
+        {
+            CarFeatures = _carFeatureResponseList,
+            Colors = _colorResponseList,
+            Engine = EngineBuilder.NewObject().ResponseBuild(),
+            FuelType = 1,
+            HasNavigationSystem = _hasNavigationSystem,
+            Id = 12,
+            Model = _model,
+            Price = _price,
+            RegistrationDate = _registrationDate,
+            Year = _year
+        };
+
     public CarBuilder WithCarFeatureSaveRequestList(List<CarFeatureSaveRequest> carFeatureSaveRequestList)
     {
         _carFeatureSaveRequestList = carFeatureSaveRequestList;
@@ -61,8 +93,8 @@ public sealed class CarBuilder
 
     public CarBuilder WithColorList(List<Color> colorList)
     {
-        _colorList = colorList; 
-        
+        _colorList = colorList;
+
         return this;
     }
 
