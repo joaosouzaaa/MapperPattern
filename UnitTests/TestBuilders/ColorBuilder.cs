@@ -1,4 +1,5 @@
 ﻿using DataTransferObjects.Requests.Color;
+using DataTransferObjects.Responses.Color;
 using Domain.Entities;
 
 namespace UnitTests.TestBuilders;
@@ -18,4 +19,11 @@ public sealed class ColorBuilder
 
     public ColorSaveRequest SaveRequestBuild() =>
         new(_name);
+
+    public ColorResponse ResponseBuild() =>
+        new()
+        {
+            Id = 123,
+            Name = _name
+        };
 }

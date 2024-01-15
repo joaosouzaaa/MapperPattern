@@ -1,4 +1,5 @@
 ﻿using DataTransferObjects.Requests.CarFeature;
+using DataTransferObjects.Responses.CarFeature;
 using Domain.Entities;
 
 namespace UnitTests.TestBuilders;
@@ -21,4 +22,12 @@ public sealed class CarFeatureBuilder
     public CarFeatureSaveRequest SaveRequestBuild() =>
         new(_name,
             _isAvailable);
+
+    public CarFeatureResponse ResponseBuild() =>
+        new()
+        {
+            IsAvailable = _isAvailable,
+            Id = 23,
+            Name = _name
+        };
 }

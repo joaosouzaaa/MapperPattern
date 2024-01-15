@@ -1,5 +1,6 @@
 ﻿using DataTransferObjects.Enums;
 using DataTransferObjects.Requests.Engine;
+using DataTransferObjects.Responses.Engine;
 using Domain.Entities;
 using Domain.Enums;
 
@@ -25,4 +26,13 @@ public sealed class EngineBuilder
         new(EEngineTypeRequest.V6,
             _horsepower,
             _description);
+
+    public EngineResponse ResponseBuild() =>
+        new()
+        {
+            Description = _description,
+            Horsepower = _horsepower,
+            Id = 123,
+            Type = 1
+        };
 }
