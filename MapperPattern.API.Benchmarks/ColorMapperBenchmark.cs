@@ -1,24 +1,23 @@
-﻿using AutoMapper.API.AutoMapperSettings;
-using AutoMapper.API.Extensions;
-using BenchmarkDotNet.Attributes;
+﻿using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Order;
-using DataTransferObjects.Requests.Color;
-using DataTransferObjects.Responses.Color;
 using Domain.Entities;
+using MapperPattern.API.Mappers;
 using UnitTests.TestBuilders;
 
-namespace AutoMapper.API.Benchmarks;
+namespace MapperPattern.API.Benchmarks;
 
 [MemoryDiagnoser]
 [Orderer(SummaryOrderPolicy.FastestToSlowest)]
 [RankColumn]
 [IterationCount(10)]
-public class ColorProfileBenchmark
+public class ColorMapperBenchmark
 {
+    private ColorMapper _colorMapper;
+
     [GlobalSetup]
     public void GlobalSetup()
     {
-        AutoMapperFactory.Inicialize();
+        _colorMapper = new ColorMapper();
     }
 
     [Benchmark]
@@ -26,7 +25,7 @@ public class ColorProfileBenchmark
     {
         var colorSaveRequest = ColorBuilder.NewObject().SaveRequestBuild();
 
-        colorSaveRequest.MapTo<ColorSaveRequest, Color>();
+        _colorMapper.SaveRequestToDomain(colorSaveRequest);
     }
 
     [Benchmark]
@@ -37,7 +36,7 @@ public class ColorProfileBenchmark
             ColorBuilder.NewObject().DomainBuild()
         };
 
-        colorList.MapTo<List<Color>, List<ColorResponse>>();
+        _colorMapper.DomainListToResponseList(colorList);
     }
 
     [Benchmark]
@@ -52,7 +51,7 @@ public class ColorProfileBenchmark
             colorList.Add(color);
         }
 
-        colorList.MapTo<List<Color>, List<ColorResponse>>();
+        _colorMapper.DomainListToResponseList(colorList);
     }
 
     [Benchmark]
@@ -67,6 +66,6 @@ public class ColorProfileBenchmark
             colorList.Add(color);
         }
 
-        colorList.MapTo<List<Color>, List<ColorResponse>>();
+        _colorMapper.DomainListToResponseList(colorList);
     }
 }

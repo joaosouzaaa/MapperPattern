@@ -11,4 +11,9 @@
     <PackageReference Include="BenchmarkDotNet" Version="0.13.12" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MapperPattern.API\MapperPattern.API.csproj" />
+    <ProjectReference Include="..\UnitTests\UnitTests.csproj" />
+  </ItemGroup>
+
 </Project>

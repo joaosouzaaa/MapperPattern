@@ -14,16 +14,16 @@ namespace AutoMapper.API.Benchmarks;
 [Orderer(SummaryOrderPolicy.FastestToSlowest)]
 [RankColumn]
 [IterationCount(10)]
-public sealed class CarProfileBenchmark
+public class CarProfileBenchmark
 {
     [GlobalSetup]
-    public static void GlobalSetup()
+    public void GlobalSetup()
     {
         AutoMapperFactory.Inicialize();
     }
 
     [Benchmark]
-    public static void SaveRequestToDomain_CarFeatureListWith1Item()
+    public void SaveRequestToDomain_CarFeatureListWith1Item()
     {
         var carFeatureSaveRequestList = new List<CarFeatureSaveRequest>()
         {
@@ -35,12 +35,12 @@ public sealed class CarProfileBenchmark
     }
 
     [Benchmark]
-    public static void SaveRequestToDomain_CarFeatureListWith10Items()
+    public void SaveRequestToDomain_CarFeatureListWith10Items()
     {
         var carFeatureSaveRequestList = new List<CarFeatureSaveRequest>();
 
         const int carFeatureSaveRequestListCount = 10;
-        for(var i = 0; i < carFeatureSaveRequestListCount; i++)
+        for (var i = 0; i < carFeatureSaveRequestListCount; i++)
         {
             var carFeatureSaveRequest = CarFeatureBuilder.NewObject().SaveRequestBuild();
             carFeatureSaveRequestList.Add(carFeatureSaveRequest);
@@ -52,7 +52,7 @@ public sealed class CarProfileBenchmark
     }
 
     [Benchmark]
-    public static void SaveRequestToDomain_CarFeatureListWith100Items()
+    public void SaveRequestToDomain_CarFeatureListWith100Items()
     {
         var carFeatureSaveRequestList = new List<CarFeatureSaveRequest>();
 
@@ -69,7 +69,7 @@ public sealed class CarProfileBenchmark
     }
 
     [Benchmark]
-    public static void DomainToResponse()
+    public void DomainToResponse()
     {
         var car = CarBuilder.NewObject().DomainBuild();
 
@@ -77,7 +77,7 @@ public sealed class CarProfileBenchmark
     }
 
     [Benchmark]
-    public static void DomainToWithRelationshipsResponse_CollectionsWith1Item()
+    public void DomainToWithRelationshipsResponse_CollectionsWith1Item()
     {
         var carFeatureList = new List<CarFeature>()
         {
@@ -93,7 +93,7 @@ public sealed class CarProfileBenchmark
     }
 
     [Benchmark]
-    public static void DomainToWithRelationshipsResponse_CollectionsWith10Items()
+    public void DomainToWithRelationshipsResponse_CollectionsWith10Items()
     {
         var carFeatureList = new List<CarFeature>();
         var colorList = new List<Color>();
@@ -114,7 +114,7 @@ public sealed class CarProfileBenchmark
     }
 
     [Benchmark]
-    public static void DomainToWithRelationshipsResponse_CollectionsWith100Items()
+    public void DomainToWithRelationshipsResponse_CollectionsWith100Items()
     {
         var carFeatureList = new List<CarFeature>();
         var colorList = new List<Color>();
@@ -135,12 +135,12 @@ public sealed class CarProfileBenchmark
     }
 
     [Benchmark]
-    public static void DomainListToResponseList_With10Items()
+    public void DomainListToResponseList_With10Items()
     {
         var carList = new List<Car>();
 
         const int carListCount = 10;
-        for(var i = 0; i < carListCount; i++)
+        for (var i = 0; i < carListCount; i++)
         {
             var car = CarBuilder.NewObject().DomainBuild();
             carList.Add(car);
@@ -150,7 +150,7 @@ public sealed class CarProfileBenchmark
     }
 
     [Benchmark]
-    public static void DomainListToResponseList_With100Items()
+    public void DomainListToResponseList_With100Items()
     {
         var carList = new List<Car>();
 
@@ -165,7 +165,7 @@ public sealed class CarProfileBenchmark
     }
 
     [Benchmark]
-    public static void DomainListToWithRelationshipsList_CollectionsWith1Item_With10Items()
+    public void DomainListToWithRelationshipsList_CollectionsWith1Item_With10Items()
     {
         var carList = new List<Car>();
 
@@ -189,7 +189,7 @@ public sealed class CarProfileBenchmark
     }
 
     [Benchmark]
-    public static void DomainListToWithRelationshipsList_CollectionsWith10Items_With10Items()
+    public void DomainListToWithRelationshipsList_CollectionsWith10Items_With10Items()
     {
         var carList = new List<Car>();
         var carFeatureList = new List<CarFeature>();
@@ -216,7 +216,7 @@ public sealed class CarProfileBenchmark
     }
 
     [Benchmark]
-    public static void DomainListToWithRelationshipsList_CollectionsWith100Items_With10Items()
+    public void DomainListToWithRelationshipsList_CollectionsWith100Items_With10Items()
     {
         var carList = new List<Car>();
         var carFeatureList = new List<CarFeature>();
@@ -243,7 +243,7 @@ public sealed class CarProfileBenchmark
     }
 
     [Benchmark]
-    public static void DomainListToWithRelationshipsList_CollectionsWith1Item_With100Items()
+    public void DomainListToWithRelationshipsList_CollectionsWith1Item_With100Items()
     {
         var carList = new List<Car>();
 
@@ -267,7 +267,7 @@ public sealed class CarProfileBenchmark
     }
 
     [Benchmark]
-    public static void DomainListToWithRelationshipsList_CollectionsWith10Items_With100Items()
+    public void DomainListToWithRelationshipsList_CollectionsWith10Items_With100Items()
     {
         var carList = new List<Car>();
         var carFeatureList = new List<CarFeature>();
@@ -294,7 +294,7 @@ public sealed class CarProfileBenchmark
     }
 
     [Benchmark]
-    public static void DomainListToWithRelationshipsList_CollectionsWith100Items_With100Items()
+    public void DomainListToWithRelationshipsList_CollectionsWith100Items_With100Items()
     {
         var carList = new List<Car>();
         var carFeatureList = new List<CarFeature>();
