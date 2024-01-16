@@ -17,11 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MapperPattern.API", "Mapper
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoMapper.API", "AutoMapper.API\AutoMapper.API.csproj", "{EB204402-D0FC-491C-9EA6-D3E3C18939BE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoMapper.API.Benchmarks", "AutoMapper.API.Benchmarks\AutoMapper.API.Benchmarks.csproj", "{9BB2F651-437E-47B6-84A6-A7ACA1362FEB}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MapperPattern.API.Benchmarks", "MapperPattern.API.Benchmarks\MapperPattern.API.Benchmarks.csproj", "{A3573FDA-E6E6-4981-8BD1-7E59D765C8A3}"
-EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{63A434FC-2D61-4354-AF1D-749B69E97CD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMapper.API.Benchmarks", "AutoMapper.API.Benchmarks\AutoMapper.API.Benchmarks.csproj", "{A9CA3A86-740D-4DFD-8BB1-7871BF0AFFBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapperPattern.API.Benchmarks", "MapperPattern.API.Benchmarks\MapperPattern.API.Benchmarks.csproj", "{9C447964-080F-49B7-860C-D2EF5348377E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,18 +53,18 @@ Global
 		{EB204402-D0FC-491C-9EA6-D3E3C18939BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB204402-D0FC-491C-9EA6-D3E3C18939BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB204402-D0FC-491C-9EA6-D3E3C18939BE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9BB2F651-437E-47B6-84A6-A7ACA1362FEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9BB2F651-437E-47B6-84A6-A7ACA1362FEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9BB2F651-437E-47B6-84A6-A7ACA1362FEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9BB2F651-437E-47B6-84A6-A7ACA1362FEB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A3573FDA-E6E6-4981-8BD1-7E59D765C8A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A3573FDA-E6E6-4981-8BD1-7E59D765C8A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A3573FDA-E6E6-4981-8BD1-7E59D765C8A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A3573FDA-E6E6-4981-8BD1-7E59D765C8A3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{63A434FC-2D61-4354-AF1D-749B69E97CD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{63A434FC-2D61-4354-AF1D-749B69E97CD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63A434FC-2D61-4354-AF1D-749B69E97CD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63A434FC-2D61-4354-AF1D-749B69E97CD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9CA3A86-740D-4DFD-8BB1-7871BF0AFFBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9CA3A86-740D-4DFD-8BB1-7871BF0AFFBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9CA3A86-740D-4DFD-8BB1-7871BF0AFFBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9CA3A86-740D-4DFD-8BB1-7871BF0AFFBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C447964-080F-49B7-860C-D2EF5348377E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C447964-080F-49B7-860C-D2EF5348377E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C447964-080F-49B7-860C-D2EF5348377E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C447964-080F-49B7-860C-D2EF5348377E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
